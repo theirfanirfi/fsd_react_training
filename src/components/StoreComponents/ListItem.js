@@ -1,4 +1,5 @@
 import DeleteItem from "./DeleteItem";
+import EditItem from "./EditItem";
 
 const ListItem = (props) => {
     let {product} = props
@@ -13,7 +14,7 @@ const ListItem = (props) => {
                         </td>
 
                         <td>
-                            <button>Edit</button>
+                            <EditItem product={product} />
                         </td>
                     </tr>
     )

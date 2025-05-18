@@ -1,10 +1,10 @@
-import {useState, useContext} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import { ProductContext } from '../../pages/MyStore';
 
 const ProductForm = () => {
-    const [productName, setProductName] = useState('')
-    const [productPrice, setProductPrice] = useState(0)
-    const {products, setProducts} = useContext(ProductContext)
+    const [productName, setProductName] = useState('');
+    const [productPrice, setProductPrice] = useState(0);
+    const {products, setProducts, productIndexForUpdate, setProductIndexForUpdate} = useContext(ProductContext);
 
 
         const productSold = (e) => {
@@ -32,6 +32,42 @@ const ProductForm = () => {
     }
     }
 
+
+        const editProductInState = (event) => {
+        let prod = products[productIndexForUpdate]
+
+        let productUpdated = {
+            ...prod,
+            'productName': productName, 
+            'productPrice': productPrice, 
+        }
+
+        let prods = products
+        prods.splice(productIndexForUpdate,1, productUpdated);
+        setProducts([...prods]);
+        // setIsEditing(false);
+        setProductName('')
+        setProductPrice(0)
+        setProductIndexForUpdate(-1)
+        // setProductUpdate({})
+    }
+
+
+
+    const initateProductUpdate = () => {
+        let prod = products[productIndexForUpdate]
+        setProductName(prod.productName)
+        setProductPrice(prod.productPrice)
+    }
+
+    useEffect(()=>{
+        if(productIndexForUpdate > -1){
+       initateProductUpdate()
+        }
+
+    }, [productIndexForUpdate])
+
+
     return (
                     <div>
                 <label>Product Name: </label>
@@ -45,7 +81,10 @@ const ProductForm = () => {
                 onChange={(e) => setProductPrice(parseInt(e.target.value))}
                 value={productPrice}
                 />
-                <button style={{marginLeft:4}} onClick={productSold}>Product Sold</button>
+
+                <button style={{marginLeft:4}} onClick={productIndexForUpdate > -1 ? editProductInState : productSold}>
+                    {productIndexForUpdate > -1 ? 'Edit Product' : 'Product Sold'}
+                </button>
                 
             </div>
     )
