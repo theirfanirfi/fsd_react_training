@@ -3,13 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App.js'
 import reportWebVitals from './reportWebVitals';
-import UserListComponent from './components/Test/UserListComponent.js';
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
-  {/* <App /> */}
-  <UserListComponent />
+  <App />
   </div>
 );
 
