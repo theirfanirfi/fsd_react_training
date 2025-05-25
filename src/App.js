@@ -4,7 +4,9 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Todos from './pages/Todos';
 import Todo from './pages/Todo';
+import Posts from './pages/Posts';
 import NavigationComponent from './components/NavigationComponent';
+import Post from './pages/Post';
 
 function App (){
 
@@ -30,6 +32,16 @@ function App (){
       <Route path="/todo/:id">
         <Todo />
       </Route>
+
+      <Route path="/posts/:id">
+      <Post />  
+      </Route>
+      
+      <Route path="/posts">
+      <Posts />
+      </Route>
+
+
 
 
         <Route path="/">
