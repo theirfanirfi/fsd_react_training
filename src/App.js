@@ -7,6 +7,7 @@ import Todo from './pages/Todo';
 import Posts from './pages/Posts';
 import NavigationComponent from './components/NavigationComponent';
 import Post from './pages/Post';
+import CreatePost from './pages/CreatePost';
 
 function App (){
 
@@ -39,6 +40,9 @@ function App (){
       
       <Route path="/posts">
       <Posts />
+      </Route>
+      <Route path="/createPost">
+        <CreatePost/>
       </Route>
 
 
