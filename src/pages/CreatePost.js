@@ -14,7 +14,7 @@ const CreatePost = () => {
             title: postTitle,
             body: postBody
         };
-        console.log("New Post Created:", newPost);
+        alert ("Your Post is Created", newPost)
     }
     return (
         <>
